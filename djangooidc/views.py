@@ -1,8 +1,16 @@
 # coding: utf-8
 
 import logging
-from urllib.parse import parse_qs
-from urllib.parse import urlencode
+
+try:
+    from urllib.parse import parse_qs
+except ImportError:
+    from urlparse import parse_qs
+
+try:
+    from urllib.parse import urlencode
+except ImportError:
+    from urllib import urlencode
 
 from django.conf import settings
 from django.contrib.auth import logout as auth_logout, authenticate, login

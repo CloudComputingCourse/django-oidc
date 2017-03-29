@@ -27,7 +27,7 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
-    name='django-oidc',
+    name='django-oidc-cmucc',
     version=version,
     description="""A Django OpenID Connect (OIDC) authentication backend""",
     long_description=readme + '\n\n' + history,
@@ -38,9 +38,10 @@ setup(
         'djangooidc',
     ],
     include_package_data=True,
+    dependency_links = ['https://github.com/CloudComputingCourse/django-oidc/tarball/master#egg=oiccmucc'],
     install_requires=[
         'django>=1.8',
-        'oic>=0.7.6',
+        'oiccmucc',
     ],
     license="Apache Software License",
     zip_safe=False,
