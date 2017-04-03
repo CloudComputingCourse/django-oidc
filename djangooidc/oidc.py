@@ -40,6 +40,7 @@ class Client(oic.Client):
             "scope": self.behaviour["scope"],
             "state": session["state"],
             "nonce": session["nonce"],
+            "client_id": self.registration_response["client_id"],
             "redirect_uri": self.registration_response["redirect_uris"][0]
         }
 
@@ -58,7 +59,7 @@ class Client(oic.Client):
         logger.info("URL: %s" % url)
         logger.debug("ht_args: %s" % ht_args)
 
-        resp = HttpResponseRedirect(url)
+        resp = HttpResponseRedirect(str(url))
         if ht_args:
             for key, value in ht_args.items():
                 resp[key] = value

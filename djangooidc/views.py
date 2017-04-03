@@ -33,7 +33,6 @@ CLIENTS = OIDCClients(settings)
 class DynamicProvider(forms.Form):
     hint = forms.CharField(required=True, label='OpenID Connect full login', max_length=250)
 
-
 def openid(request, op_name=None):
     client = None
     request.session["next"] = request.GET["next"] if "next" in request.GET.keys() else "/"
@@ -54,8 +53,10 @@ def openid(request, op_name=None):
     else:
         ilform = AuthenticationForm()
 
+    logger.info(str(CLIENTS))
+
     # Try to find an OP client either from the form or from the op_name URL argument
-    if request.method == 'GET' and op_name is not None:
+    if request.method == 'GET' and op_name is not None: 
         client = CLIENTS[op_name]
         request.session["op"] = op_name
 
