@@ -38,10 +38,9 @@ setup(
         'djangooidc',
     ],
     include_package_data=True,
-    dependency_links = ['https://github.com/CloudComputingCourse/django-oidc/tarball/master#egg=oiccmucc'],
     install_requires=[
         'django>=1.8',
-        'oiccmucc',
+        'oic>=7.6.0',
     ],
     license="Apache Software License",
     zip_safe=False,
