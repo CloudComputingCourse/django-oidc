@@ -53,10 +53,8 @@ def openid(request, op_name=None):
     else:
         ilform = AuthenticationForm()
 
-    logger.info(str(CLIENTS))
-
     # Try to find an OP client either from the form or from the op_name URL argument
-    if request.method == 'GET' and op_name is not None: 
+    if request.method == 'GET' and op_name is not None:
         client = CLIENTS[op_name]
         request.session["op"] = op_name
 
